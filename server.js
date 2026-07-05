@@ -2,10 +2,14 @@ require("dotenv").config();
 
 const express = require("express");
 const axios = require("axios");
+const path = require("path");
 const tfidfEngine = require("./tfidf/engine");
 const app = express();
 
 app.use(express.static("public"));
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 const tmdb = axios.create({
     baseURL: "https://api.themoviedb.org/3",
@@ -189,12 +193,15 @@ app.get("/api/discover", async (req, res) => {
     }
 
 });
-tfidfEngine.initialize();
 
-const PORT = process.env.PORT || 3000;
+let initialized = false;
 
-app.listen(PORT, () => {
-
-    console.log(`Server running on port ${PORT}`);
-
+app.use(async (req, res, next) => {
+    if (!initialized) {
+        await tfidfEngine.initialize();
+        initialized = true;
+    }
+    next();
 });
+
+module.exports = app;
