@@ -194,14 +194,15 @@ app.get("/api/discover", async (req, res) => {
 
 });
 
-let initialized = false;
-
-app.use(async (req, res, next) => {
-    if (!initialized) {
-        await tfidfEngine.initialize();
-        initialized = true;
-    }
-    next();
-});
+tfidfEngine.initialize();
 
 module.exports = app;
+
+// Jalankan server hanya jika bukan dijalankan oleh Vercel
+if (require.main === module) {
+    const PORT = process.env.PORT || 3000;
+
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
