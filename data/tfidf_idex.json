@@ -1,0 +1,43 @@
+{
+
+  "totalDocuments":1200,
+
+  "idf":{
+
+      "robot":4.28,
+
+      "future":3.81,
+
+      "war":2.77
+
+  },
+
+  "documents":[
+
+      {
+
+        "id":603,
+
+        "title":"The Matrix",
+
+        "tokens":[
+            "matrix",
+            "robot",
+            "future"
+        ],
+
+        "vector":{
+
+            "matrix":0.61,
+
+            "robot":0.52,
+
+            "future":0.30
+
+        }
+
+      }
+
+  ]
+
+}

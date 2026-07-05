@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Search</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+
+    <div class="logo">
+        🎬<span>Movie</span> Search
+    </div>
+
+    <div class="menu">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="favorites.html">
+             Favorites
+        </a>
+
+    </div>
+
+</nav>
+<div id="hero"></div>
+<div class="search-container">
+
+    <input
+        id="search"
+        placeholder="Cari film atau serial..."
+    >
+    <button onclick="searchMovie()"
+    onclick="searchMovie()"
+    class="search-btn">
+  Cari
+</button>
+
+    <select id="genre">
+
+        <option value="">
+            Semua Genre
+        </option>
+
+    </select>
+
+</div>
+
+<div id="results"></div>
+<footer>
+<div class="pagination">
+
+    <button
+    class="page-btn" 
+    onclick="prevPage()">
+        ← Previous
+    </button>
+
+    <span id="page-number">
+        Page 1
+    </span>
+
+    <button class="page-btn" onclick="nextPage()">
+        Next →
+    </button>
+
+</div>
+    <p>
+        Movie Search Engine © 2026
+    </p>
+
+</footer>
+<script src="app.js"></script>
+
+</body>
+</html>
